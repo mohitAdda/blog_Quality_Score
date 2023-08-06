@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<head>
+    <title>Check Blog Quality Score</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        form {
+            width: 80%;
+            margin: auto;
+            margin-top: 50px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #13caea;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #26b5e1;
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .loader-text {
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .buttonload {
+        background-color: #26b5e1; /* Green background */
+        border: none; /* Remove borders */
+        color: white; /* White text */
+        padding: 15px 18px; /* Some padding */
+        font-size: 18px /* Set a font size */
+        }
+    </style>
+    <script>
+        function showLoader() {
+            document.getElementById("modal").style.display = "block";
+        }
+    
+        function hideLoader() {
+            document.getElementById("modal").style.display = "none";
+        }
+    
+        document.querySelector("form").addEventListener("submit", async function(event) {
+            event.preventDefault(); // Prevent form submission
+            showLoader();
+    
+            // Add a delay using async/await
+            await new Promise(resolve => setTimeout(resolve, 2000));
+    
+            // Now submit the form
+            document.querySelector("form").submit();
+        });
+    </script>
+</head>
+
+<body>
+    <h1>Check Blog Quality Score</h1>
+    <form method="POST" action="/">
+        <label for="article_url">Enter Article URL:</label>
+        <input type="text" name="article_url" id="article_url" required>
+        <br>
+        <label for="relevant_keywords">Enter Relevant Keywords (comma-separated):</label>
+        <input type="text" name="relevant_keywords" id="relevant_keywords" required>
+        <br>
+        <input type="submit" value="Calculate Effort Score">
+    </form>
+    
+    <!-- Modal Popup -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <!--  <p class="loader-text">Please wait...</p> -->
+            <!-- <i class="fa fa-spinner fa-spin"></i>Please wait -->
+            <button class="buttonload">
+                <i class="fa fa-spinner fa-spin"></i> <tb> Calculating Score... </tb>
+            </button>
+        </div>
+    </div>
+    <script>
+        function showLoader() {
+            document.getElementById("modal").style.display = "block";
+        }
+    
+        function hideLoader() {
+            document.getElementById("modal").style.display = "none";
+        }
+    
+        document.querySelector("form").addEventListener("submit", async function(event) {
+            event.preventDefault(); // Prevent form submission
+            showLoader();
+    
+            // Add a delay using async/await
+            await new Promise(resolve => setTimeout(resolve, 2000));
+    
+            // Now submit the form
+            document.querySelector("form").submit();
+        });
+    </script>
+</body>
+</html>

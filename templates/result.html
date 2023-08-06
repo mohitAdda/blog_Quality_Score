@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blog Quality Score Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .result-container {
+            width: 80%;
+            margin: auto;
+            margin-top: 50px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .effort-score {
+            font-size: 24px;
+            font-weight: bold;
+            color: #007bff;
+            text-align: center;
+        }
+
+        .status {
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .highlight {
+            background-color: rgb(248, 125, 80);
+        }
+    </style>
+</head>
+<body>
+    <h1>Blog Quality Score Result</h1>
+    <div class="result-container">
+        <p class="effort-score">Blog Quality Score: {{ effort_score }}</p>
+        <p class="status" style="color:{{ status_color }};"> Status: {{ status }}</p>
+        <h2>Contributions :</h2>
+        <ul>
+            {% for score, contribution in contributions.items() %}
+            <li>{{ score }}: {{ contribution }}%</li>
+            {% endfor %}
+        </ul>
+    </div>
+   
+    <div class="result-container" style="background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);">
+        <h2 style="text-align: center; margin-top: 30px;">Suggested Keywords for SEO Improvement:</h2>
+        <ul style="list-style-type: none; padding: 0; margin-top: 20px;">
+            {% for keyword in suggested_keywords %}
+                <li>{{ keyword }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="result-container">
+        <h2>Correct the words :</h2>
+        <p>
+            {% for word, is_misspelled in misspelled_words_with_correction.items() %}
+                {% if is_misspelled %}
+                    <span class="highlight">{{ word }}</span>
+                {% else %}
+                    {{ word }}
+                {% endif %}
+                &nbsp;
+            {% endfor %}
+        </p>
+    </div>
+</body>
+</html>
