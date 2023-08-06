@@ -54,7 +54,7 @@ sphinxcontrib-jquery==4.1
 sphinxcontrib-jsmath==1.0.1
 sphinxcontrib-qthelp==1.0.3
 sphinxcontrib-serializinghtml==1.1.5
-sympy==1.12
+sympy==1.10.1
 textblob==0.17.1
 threadpoolctl==3.2.0
 tokenizers==0.13.3
